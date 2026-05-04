@@ -1,0 +1,30 @@
+let nom = "   Fatima   ";
+let age = "23";
+let email = "fatima@example";
+let scoreJeu = "150pts";
+let estAdmin = "false";
+let derniereConnexion = null;
+let nombreConnexions = "0";
+
+nom = nom.trim() == "" ? "Inconnu" : nom.trim();
+age = parseInt(age);
+const ageStatut = (age > 0) ? `${age} (valide)` : "valeur invalide";
+const indexAt = email.indexOf("@");
+const indexDot = email.indexOf(".", indexAt);
+const emailStatut = (indexAt !== -1 && indexDot !== -1) ? "valide" : "invalide : pas de point après @";
+scoreJeu = parseInt(scoreJeu);
+if (Number.isNaN(scoreJeu)) scoreJeu = 0;
+estAdmin = (String(estAdmin) === "true");
+const connexionStatut = derniereConnexion ?? "Jamais connecté";
+nombreConnexions = Number(nombreConnexions);
+const nbConnexionsAffichage = (nombreConnexions === 0) ? "Aucune connexion" : nombreConnexions;
+
+console.log("===== RAPPORT UTILISATEUR =====");
+console.log(`nom              : "${nom}" (corrigé : espaces supprimés)`);
+console.log(`age              : ${ageStatut}`);
+console.log(`email            : "${email}" (${emailStatut})`);
+console.log(`scoreJeu         : ${scoreJeu} (extrait depuis "${scoreJeu}")`);
+console.log(`estAdmin         : ${estAdmin} (attention : Boolean("false") = true, conversion manuelle requise)`);
+console.log(`derniereConnexion: "${connexionStatut}" (valeur par défaut via ??)`);
+console.log(`nombreConnexions : "${nbConnexionsAffichage}" (0 après conversion)`);
+console.log("================================");
